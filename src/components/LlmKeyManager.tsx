@@ -114,9 +114,7 @@ export function LLMKeyManager({
 
     onSave({
       provider: selectedProvider,
-
       apiKey: apiKey.trim(),
-
       persistInSession,
     });
   };
