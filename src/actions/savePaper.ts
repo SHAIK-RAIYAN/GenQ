@@ -6,7 +6,7 @@ import { createClient } from "@supabase/supabase-js";
 export async function savePaperToDatabase(
   paperData: any,
   title: string,
-  totalMarks: number
+  totalMarks: number,
 ) {
   const user = await currentUser();
   if (!user) {
@@ -50,7 +50,9 @@ export async function savePaperToDatabase(
         section.questions.forEach((question: any) => {
           questionsArray.push({
             paper_id: paper.id,
-            unit_number: parseInt(question.unit.toString().match(/\d+/)?.[0] || "0"),
+            unit_number: parseInt(
+              question.unit.toString().match(/\d+/)?.[0] || "0",
+            ),
             marks: parseInt(question.marks) || 0,
             blooms_level: question.blooms_taxonomy_level,
             question_text: question.question_text,
@@ -62,7 +64,9 @@ export async function savePaperToDatabase(
     paperData.questions.forEach((question: any) => {
       questionsArray.push({
         paper_id: paper.id,
-        unit_number: parseInt(question.unit.toString().match(/\d+/)?.[0] || "0"),
+        unit_number: parseInt(
+          question.unit.toString().match(/\d+/)?.[0] || "0",
+        ),
         marks: parseInt(question.marks) || 0,
         blooms_level: question.blooms_taxonomy_level,
         question_text: question.question_text,

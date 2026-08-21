@@ -4,6 +4,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { LenisProvider } from "@/components/providers/LenisProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/next';
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,10 +36,10 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
-        >
+          className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}>
           <LenisProvider>
             <ThemeProvider>{children}</ThemeProvider>
+            <Analytics />
           </LenisProvider>
         </body>
       </html>
